@@ -1,5 +1,5 @@
 import Button from "./classes/Button.js";
-import AnaPerson from "./classes/AnaPerson_K.js";
+import AnaPerson from "./classes/AnaPerson.js";
 import NotebookIcon from "./classes/notebookIcon.js";
 import InstantFeedback from "./classes/instant_feedback.js";
 import SpeechBubble from "./classes/SpeechBubble.js";
