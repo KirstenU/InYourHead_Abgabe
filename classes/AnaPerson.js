@@ -1,4 +1,3 @@
-let Namearray = ["Test"];
 let Hoverthoughtarray = ["erster Test", "zweiter Test", "dritter Test"];
 
 export default class AnaPerson {
@@ -21,11 +20,11 @@ export default class AnaPerson {
       (mouseX >= this.x &&
         mouseX <= this.x + this.width &&
         mouseY >= this.y + 135 &&
-        mouseY <= this.y + ana.height) ||
+        mouseY <= this.y + this.height) ||
       (mouseX >= this.x + 75 &&
         mouseX <= this.x + this.width - 30 &&
         mouseY >= this.y + 5 &&
-        mouseY <= this.y + ana.height - 125)
+        mouseY <= this.y + this.height - 125)
     ) {
       push();
       fill(255);
@@ -33,8 +32,8 @@ export default class AnaPerson {
       ellipse(370, 170, 40);
       ellipse(340, 200, 20);
       fill(0);
-      Hoverthoughtarray.push(ana.hoverthought);
-      text(Hoverthoughtarray[ana.hoverthought], 415, 100);
+      Hoverthoughtarray.push(this.hoverthought);
+      text(Hoverthoughtarray[this.hoverthought], 415, 100);
       pop();
     } else {
       fill(100);

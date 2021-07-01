@@ -1,4 +1,4 @@
-import AnaPersonParameter from "./classes/AnaPersonParameter.js";
+import AnaPersonParameter from "./AnaPersonParameter.js";
 export default class WellBeing extends AnaPersonParameter {
   constructor(x, y, trigger, wellBeing) {
     super(trigger, wellBeing);

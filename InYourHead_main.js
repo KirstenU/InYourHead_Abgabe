@@ -25,6 +25,7 @@ let messageArray = [
   "hii",
   "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet ",
 ];
+let Namearray = ["Test"];
 
 for (let i = 0; i < messageArray.length; i++) {
   bubbleArray.push(new SpeechBubble(messageArray[i], person[i]));
@@ -48,6 +49,7 @@ function mouseClicked() {
     feedbackAnzeigen = false;
   }
 }
+window.mouseClicked = mouseClicked;
 
 let ana = new AnaPerson(100, 100, 200, 300, "Miriam", "happy", "1");
 Namearray.push(ana.name);
@@ -55,8 +57,9 @@ console.log(Namearray[1]);
 
 function draw() {
   clear();
-  background(85);
-
+  fill(100);
+  noStroke();
+  rect(0, 0, 1162, 700);
   ana.hover();
   ana.mood();
   icon.display();
@@ -86,3 +89,4 @@ function draw() {
   }
   mood.display();
 }
+window.draw = draw;
