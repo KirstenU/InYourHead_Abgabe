@@ -57,9 +57,11 @@ console.log(Namearray[1]);
 
 function draw() {
   clear();
+  push();
   fill(100);
   noStroke();
   rect(0, 0, 1162, 700);
+  pop();
   ana.hover();
   ana.mood();
   icon.display();
