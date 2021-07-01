@@ -49,7 +49,7 @@ function mouseClicked() {
   }
 }
 
-let ana = new AnaPerson(100, 100, 200, 300, "Miriam", "heart", "1");
+let ana = new AnaPerson(100, 100, 200, 300, "Miriam", "happy", "1");
 Namearray.push(ana.name);
 console.log(Namearray[1]);
 

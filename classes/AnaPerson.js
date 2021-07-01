@@ -10,15 +10,22 @@ export default class AnaPerson {
     this.hoverthought = hoverthought;
     this.name = name;
     this.currentMood = currentMood;
-    this.picture = loadImage("pictures/bP/sad.png");
+    this.picturesad = loadImage("pictures/bP/sad.png");
+    this.picturehappy = loadImage("pictures/bP/happy.png");
+    this.pictureneutral = loadImage("pictures/bP/neutral.png");
+    this.picturecrying = loadImage("pictures/bP/crying.png");
+    this.picturescared = loadImage("pictures/bP/scared.png");
   }
   hover() {
-    image(this.picture, this.x, this.y, this.width, this.height);
     if (
-      mouseX >= this.x &&
-      mouseX <= this.x + this.width &&
-      mouseY >= this.y &&
-      mouseY <= this.y + this.height
+      (mouseX >= this.x &&
+        mouseX <= this.x + this.width &&
+        mouseY >= this.y + 135 &&
+        mouseY <= this.y + ana.height) ||
+      (mouseX >= this.x + 75 &&
+        mouseX <= this.x + this.width - 30 &&
+        mouseY >= this.y + 5 &&
+        mouseY <= this.y + ana.height - 125)
     ) {
       push();
       fill(255);
@@ -37,12 +44,21 @@ export default class AnaPerson {
     push();
     textSize(15);
     fill(255);
-    if (this.currentMood === "laugh") {
-      text(" Moodchange 😂", 150, 450);
-    } else if (this.currentMood === "smilecry") {
-      text("Moodchange 🥲", 150, 450);
-    } else if (this.currentMood === "heart") {
-      text("Moodchange 😍", 150, 450);
+    if (this.currentMood === "happy") {
+      image(this.picturehappy, this.x, this.y, this.width, this.height);
+      console.log("Happy");
+    } else if (this.currentMood === "crying") {
+      image(this.picturecrying, this.x, this.y, this.width, this.height);
+      console.log("crying");
+    } else if (this.currentMood === "neutral") {
+      image(this.pictureneutral, this.x, this.y, this.width, this.height);
+      console.log("neutral");
+    } else if (this.currentMood === "sad") {
+      image(this.picturesad, this.x, this.y, this.width, this.height);
+      console.log("sad");
+    } else if (this.currentMood === "scared") {
+      image(this.picturescared, this.x, this.y, this.width, this.height);
+      console.log("scared");
     }
     pop();
   }
