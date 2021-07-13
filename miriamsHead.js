@@ -16,7 +16,7 @@ import {
   dialog,
   minSpeechbubble,
   maxSpeechbubble,
-} from "./organisation/Dialog.js";
+} from "./organisation/dialog.js";
 import AnaPerson from "./AnaPerson_K.js";
 import InstantFeedback from "./instant_feedback.js";
 import Notebook from "./notebook.js";
