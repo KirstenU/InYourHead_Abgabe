@@ -21,6 +21,7 @@ export function screens(
   teller,
   wohnzimmer
 ) {
+  //es wird festgelegt, wann welches Bild wo angezeigt wird (für die Ingame Screens)
   if (situation === "street") {
     image(haeuser, 0, 0, 1162, 700);
   }

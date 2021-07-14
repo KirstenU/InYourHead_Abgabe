@@ -1,3 +1,5 @@
+//auf dieser Art von Screens wird zuerst festgelet, wo das Hintergrundbild angezeigt werden soll und welche Buttons wo anzeiegt werden.
+//im Anschluss bekommen diese Buttons einen hitTest, mit dem getestet wird, ob die gedrückt wurden.
 import AnaPersonParameter from "./AnaPersonParameter.js";
 export default class WellBeing extends AnaPersonParameter {
   constructor(x, y, trigger, wellBeing) {

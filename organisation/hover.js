@@ -1,3 +1,4 @@
+//hier werden die Hover für die Situationen festgelegt
 let hoverNumber = 0;
 export function hover(person, situation) {
   if (person === "friend") {

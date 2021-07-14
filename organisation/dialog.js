@@ -1,3 +1,4 @@
+//hier wird angezeigt, wann welche Dialogintervalle anzeiegt werden
 export var minSpeechbubble = 0;
 export var maxSpeechbubble = 0;
 export function dialog(person, situation) {
@@ -10,10 +11,9 @@ export function dialog(person, situation) {
       minSpeechbubble = 20;
       maxSpeechbubble = 22;
     }
-
     if (situation === "leniNear") {
       minSpeechbubble = 22;
-      maxSpeechbubble = 28;
+      maxSpeechbubble = 27;
     }
 
     if (situation === "school1") {
@@ -28,7 +28,6 @@ export function dialog(person, situation) {
       minSpeechbubble = 29;
       maxSpeechbubble = 31;
     }
-
     if (situation === "shopping") {
       minSpeechbubble = 73;
       maxSpeechbubble = 78;
@@ -47,13 +46,12 @@ export function dialog(person, situation) {
     }
     if (situation === "music") {
       minSpeechbubble = 83;
-      maxSpeechbubble = 83;
+      maxSpeechbubble = 85;
     }
     if (situation === "music2") {
       minSpeechbubble = 85;
-      maxSpeechbubble = 85;
+      maxSpeechbubble = 87;
     }
-
     if (situation === "mobilephone1") {
       minSpeechbubble = 30;
       maxSpeechbubble = 31;
@@ -66,8 +64,6 @@ export function dialog(person, situation) {
       minSpeechbubble = 34;
       maxSpeechbubble = 37;
     }
-    //changed
-
     if (situation === "oberfeld1") {
       minSpeechbubble = 57;
       maxSpeechbubble = 59;
@@ -80,7 +76,6 @@ export function dialog(person, situation) {
       minSpeechbubble = 59;
       maxSpeechbubble = 61;
     }
-
     if (situation === "picknick1") {
       minSpeechbubble = 61;
       maxSpeechbubble = 62;
@@ -101,7 +96,6 @@ export function dialog(person, situation) {
       minSpeechbubble = 39;
       maxSpeechbubble = 40;
     }
-
     if (situation === "parkpicknick1") {
       minSpeechbubble = 42;
       maxSpeechbubble = 43;
@@ -134,10 +128,6 @@ export function dialog(person, situation) {
       minSpeechbubble = 100;
       maxSpeechbubble = 103;
     }
-    /* if (situation === "duck") {
-      minSpeechbubble = 5;
-      maxSpeechbubble = 6;
-    }*/
     if (situation === "leniNear") {
       minSpeechbubble = 21;
       maxSpeechbubble = 26;

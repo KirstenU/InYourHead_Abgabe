@@ -1,3 +1,5 @@
+//auf dieser Art von Screens wird zuerst festgelet, wo das Hintergrundbild angezeigt werden soll und welche Buttons wo anzeiegt werden.
+//im Anschluss bekommen diese Buttons einen hitTest, mit dem getestet wird, ob die gedrückt wurden.
 import Button from "./neueButtons.js";
 let verstandenbutton = new Button(825, 560, 230, 65, "Verstanden", "c9a6b9");
 let weiterbutton = new Button(825, 560, 230, 65, "Weiter", "c9a6b9");

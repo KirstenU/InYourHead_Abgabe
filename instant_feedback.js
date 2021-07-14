@@ -39,16 +39,16 @@ export default class InstantFeedback {
     //weiterhin wird die Texthöhe als this.height definiert
     this.height = this.messageHeight(this.textLeading);
     fill(255);
-    rect(this.x + 180, this.y, this.width, this.height + 20, 10);
+    rect(this.x + 180, this.y, this.width, this.height + 50, 10);
     push();
     translate(this.x, this.y);
     fill(0);
     triangle(
-      this.width - 20 + 180,
+      this.width - 20 + 150,
       this.y + 20,
-      this.width - 10 + 180,
+      this.width - 10 + 150,
       this.y + 25,
-      this.width - 20 + 180,
+      this.width - 20 + 150,
       this.y + 30
     );
     pop();
@@ -59,15 +59,15 @@ export default class InstantFeedback {
     fill(0);
     textFont("Hero New");
     textSize(20);
-    text(this.message, this.x + 200, this.y + 30, this.width - 20);
+    text(this.message, this.x + 200, this.y + 30, this.width - 55);
     pop();
   }
 
   //richtiger hitTest
   hitTest() {
     if (
-      mouseX >= this.x + this.width - 20 + 180 &&
-      mouseX <= this.x + this.width - 10 + 180 &&
+      mouseX >= this.x + this.width - 20 + 150 &&
+      mouseX <= this.x + this.width - 10 + 150 &&
       mouseY >= this.y + this.y + 10 &&
       mouseY <= this.y + this.y + 30
     ) {

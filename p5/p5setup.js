@@ -30,6 +30,12 @@ function preload() {
   exitPic = loadImage("./exit_button.png");
   notebookIcon = loadImage("./icon.png");
   situationOne = loadImage("./Screens_ohneButtons/Feedback_Screens.jpg");
+  situationTwo = loadImage("./Screens_ohneButtons/Feedback_Screens2.jpg");
+  situationThree = loadImage("./Screens_ohneButtons/Feedback_Screens3.jpg");
+  situationFour = loadImage("./Screens_ohneButtons/Feedback_Screens4.jpg");
+  dankePic = loadImage("./Screens_ohneButtons/DankeScreen.jpg");
+  parkPic = loadImage("./backgroundScreens/park.png");
+  picknickPic = loadImage("./backgroundScreens/picknick.png");
 }
 window.preload = preload;
 

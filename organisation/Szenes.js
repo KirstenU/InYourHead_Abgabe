@@ -1,3 +1,4 @@
+//eine allgemeine Klasse, die festlegt, wann was angezeigt werdn soll
 export default class Situation {
   constructor(situation, person) {
     this.situation = situation;
@@ -9,59 +10,6 @@ export default class Situation {
     this.feedback = 0;
     this.picture = "";
   }
-  /*hover() {
-    if (this.person === "friend") {
-      if (this.situation === "duck") {
-        this.hoverNumber = 5;
-      }
-
-      if (this.situation === "leniNear") {
-        this.hoverNumber = 6;
-      }
-      if (this.situation === "backery") {
-        this.hoverNumber = 3;
-      }
-      if (this.situation === "flower") {
-        this.hoverNumber = 4;
-      }
-      if (this.situation === "music2") {
-        this.hoverNumber = 11;
-      }
-      if (this.situation === "oberfeld3") {
-        this.hoverNumber = 10;
-      }
-      if (this.situation === "park3") {
-        this.hoverNumber = 9;
-      }
-      if (this.situation === "television3") {
-        this.hoverNumber = 8;
-      }
-    }
-    if ((this.person = "parent")) {
-      if (this.situation === "duck") {
-        this.hoverNumber = 5;
-      }
-      if (this.situation === "leniNear") {
-        this.hoverNumber = 6;
-      }
-      if (this.situation === "bakery") {
-        this.hoverNumber = 3;
-      }
-      if (this.situation === "flower") {
-        this.hoverNumber = 2;
-      }
-      if (this.situation === "kitchen") {
-      }
-      if (this.situation === "dinner") {
-        if (this.situation === "dinner1") {
-          this.hoverNumber = 0;
-        }
-        if (this.situation === "dinner2") {
-          this.hoverNumber = 1;
-        }
-      }
-    }
-  }*/
   button() {
     if (this.person === "friend") {
       if (this.situation === "street") {
@@ -186,93 +134,6 @@ export default class Situation {
       }
     }
   }
-  /*instantFeedback() {
-    if (this.situation === "duck") {
-      if (this.situation === "duck1") {
-        this.feedback = 0;
-      }
-      if (this.situation === "duck2") {
-        this.feedback = 1;
-      }
-    }
-    if (this.situation === "leniNear") {
-      this.feedback = 2;
-    }
-    if (this.situation === "school") {
-      this.feedback = 3;
-    }
-
-    if (this.situation === "music") {
-      if (this.situation === "music1") {
-        this.feedback = 9;
-      }
-      if (this.situation === "music2") {
-        this.feedback = 10;
-      }
-    }
-
-    if (this === "picknick") {
-      if (this === "picknick1") {
-        this.feedback = 17;
-      }
-      if (this === "picknick2") {
-        this.feedback = 18;
-      }
-    }
-    if (this.situation === "television") {
-      if (this.situation === "TV1") {
-        this.feedback = 19;
-      }
-      if (this.situation === "TV2") {
-        this.feedback = 20;
-      }
-      if (this.situation === "TV3") {
-        this.feedback = 21;
-      }
-      if (this.situation === "TV4") {
-        this.feedback = 22;
-      }
-      if (this.situation === "TV5") {
-        this.feedback = 23;
-      }
-    }
-    if (this.situation === "bakery") {
-      if (this.situation === "bakery1") {
-        this.feedback = 7;
-      }
-      if (this.situation === "bakery2") {
-        this.feedback = 8;
-      }
-    }
-    if (this.situation === "kitchen") {
-      this.feedback = 5;
-    }
-    if (this.situation === "dinner") {
-      this.feedback = 6;
-    }
-    if (this.situation === "auntHouseWithbP") {
-      if (this.situation === "auntHouseWithbP1") {
-        thid.feedback = 14;
-      }
-      if (this.situation === "auntHouseWithbP2") {
-        this.feedback = 15;
-      }
-      if (this.situation === "auntHouseWithbP3") {
-        this.feedback = 16;
-      }
-    }
-    if (this.situation === "auntDinner") {
-      if (this.situation === "auntDinner1") {
-        this.feedback = 11;
-      }
-      if (this.situation === "auntDinner2") {
-        this.feedback = 12;
-      }
-      if (this.situation === "auntDinner3") {
-        this.feedback = 13;
-      }
-    }
-  }*/
   dialog() {
     if (this.person === "friend") {
       if (this.situation === "street") {
@@ -538,7 +399,11 @@ export default class Situation {
     if (this.situation === "flower") {
       image(blumenladen, 0, 0, 1162, 700);
     }
-    if (this.situation === "music" || this.situation === "music2") {
+    if (
+      this.situation === "music" ||
+      this.situation === "music2" ||
+      this.situation === "music3"
+    ) {
       image(musikladen, 0, 0, 1162, 700);
     }
     if (

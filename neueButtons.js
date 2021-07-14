@@ -1,3 +1,4 @@
+//hier werden Buttons erzeiúgt
 export default class Button {
   constructor(x, y, width, height, name, color) {
     this.x = x;

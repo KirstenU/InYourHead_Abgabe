@@ -1,7 +1,9 @@
+//in diese Datei wurden unsere Arrays exprotiert, da diese Sehr umfangreich sind.
+//man findet...
 export default class Export {
   constructor(bP) {
     this.bP = bP;
-
+    //die Nachrichten der Sprechblasen
     this.buttonMessage = [
       "...zum Park gehen",
       "....zur Schule gehen",
@@ -47,11 +49,12 @@ export default class Export {
       "Ich mache schnell die Käsesoße für die Nachos warm, okay?",
       "Soll ich uns ein bisschen Quark mit Rohkost machen?",
     ];
+    //die Nachrichten des instant Feedbacks
     this.instantFeedbackMessage = [
       "Denk nicht zu  viel nach. Dieses Mal hatten beide Entscheidungen das gleiche Resultat.",
       "Denk nicht zu viel nach. Dieses Mal hatten beide Entscheidungen das gleiche Resultat.",
       "Manchmal kommt ein unerwarteter Trigger wie aus dem nichts.",
-      "Th+*ink positive!",
+      "Think positive!",
       "Think positive!",
       "Manchen Betroffenen hilft es mit zu kochen. Probiere es beim nächsten Mal aus!",
       "Gut so! Du musst " +
@@ -82,6 +85,7 @@ export default class Export {
     this.feedbackTextForNotebook = [];
     //Nach dem erscheinen von einem Instant Feedback wird der passende Notebook satz ins feddbacktextforNotebook gepusht
     //für die Situationen bei der Tante gibt es keine Notebook sätze
+    //die nachrichten des instant Feedbacks für das Notizbuch
     this.instantFeedbackForNotebook = [
       "Man sollte sich nicht den Kopf zerbrechen. Auch Angehörige leiden psychisch unter der Krankheit.",
       "Magersüchtige Personen wollen oft nicht auf ihre Magersucht reduziert werden.",
@@ -94,9 +98,10 @@ export default class Export {
     ];
     this.displayMiddleFeedback = [];
     this.finalFeedback = [];
+    //das Feedback am Ende einer Szene
     this.createMiddleFeedback = [
       "Wie du merkst, ist es für " +
-        this.bp +
+        this.bP +
         " nicht in jeder Situation, in der Essen vorkommt, schwer damit zu hantieren. Hier musste " +
         this.bP +
         " außerdem nicht für sich selbst entscheiden, sondern konnte einfach den Ente was Gutes tun.",
@@ -150,6 +155,7 @@ export default class Export {
       "Viele betroffene Personen würden sich freuen, besser mit ihren engsten Mitmenschen zu kommunizieren. Auch wie in der letzten Situation ist es immer gut sehr aufmerksam zu sein, trotzdem musst du nicht immer besonders vorsichtig auf betroffenen Personen zu gehen.",
       "Viele betroffene Personen würden sich freuen, besser mit ihren engsten Mitmenschen zu kommunizieren. Auch wie in der letzten Situation ist es immer gut sehr aufmerksam zu sein, trotzdem musst du nicht immer besonders vorsichtig auf betroffenen Personen zu gehen.",
     ];
+    //die Hoveredanken
     this.hoverMessage = [
       "In der Klinik habe ich gelernt, dass man nicht immer das Essen celebrieren muss. Aber wie gerne würde ich mich so sehr über das Essen freuen wie die anderen",
       "Du weist doch, dass das nicht so einfach geht! Der Heilungsprozess wird noch lange brauchen",
@@ -164,6 +170,7 @@ export default class Export {
       "Im Schatten der Büsche fühle ich mich wohler und es ist privater.",
       "Schön zu wissen, dass ich nicht alleine mit dem Problem bin.",
     ];
+    //die Sprechblasennachrichten
     this.dialogMessage = [
       "Hey, " +
         this.bP +
@@ -275,6 +282,7 @@ export default class Export {
       "Das klingt nach einer guten Idee. Wohin wollen wir gehen?",
       "Lass uns....",
     ];
+    //die Buttonkoordianten
     this.buttonY = [
       700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700,
       700, 400, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 400, 700, 700,
@@ -286,6 +294,7 @@ export default class Export {
       967.5, 740, 967.5, 740, 740, 967.5, 740, 740, 967.5, 740, 967.5, 740, 740,
       967.5, 740, 967.5, 740, 967.5, 740,
     ];
+    //wann welche Person eine Aussage macht
     this.person = [
       "bP",
       "user",

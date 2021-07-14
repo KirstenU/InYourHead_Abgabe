@@ -2,6 +2,8 @@ import Button from "./neueButtons.js";
 let freundebutton = new Button(320, 330, 230, 65, "FreundIn", "c9a6b9");
 let familiebutton = new Button(610, 330, 230, 65, "Elternteil", "c9a6b9");
 
+//auf dieser Art von Screens wird zuerst festgelet, wo das Hintergrundbild angezeigt werden soll und welche Buttons wo anzeiegt werden.
+//im Anschluss bekommen diese Buttons einen hitTest, mit dem getestet wird, ob die gedrückt wurden.
 export default class ChooseScreen {
   constructor() {}
   display(picture) {
