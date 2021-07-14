@@ -22,8 +22,6 @@ import InstantFeedback from "./instant_feedback.js";
 import Notebook from "./notebook.js";
 //Parameter
 let knowledge = 0;
-let thought = "";
-mood.wellBeing = 0;
 //nameScreen
 let fieldPressed = false;
 let field = {
@@ -78,6 +76,7 @@ dialog(situationPerson, state);
 //Name
 let bPName = " Toni ";
 let currentMood = "neutral";
+let thought = "";
 let ana = new AnaPerson(100, 300, 250, 400, bPName, currentMood, thought);
 let nameWritten = false;
 let three = false;
