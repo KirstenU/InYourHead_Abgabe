@@ -13,3 +13,7 @@ canvas {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+#p5_loading {
+  font-family: Arial, Helvetica, sans-serif;
+}
