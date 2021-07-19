@@ -13,7 +13,3 @@ canvas {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-.loadingclass {
-  font-family: Arial, Helvetica, sans-serif;
-}
