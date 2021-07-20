@@ -20,6 +20,7 @@ import {
 import AnaPerson from "./AnaPerson_K.js";
 import InstantFeedback from "./instant_feedback.js";
 import Notebook from "./notebook.js";
+import Exit from "./ExitButton.js";
 //Parameter
 let knowledge = 0;
 
@@ -52,13 +53,14 @@ let feedbackScreen = [];
 let allTheNotebook = [];
 let pbNameArray = [];
 //bP
+let exit = new Exit();
 let start = new StartScreen();
 let gotIt = new VerstaendnisScreen();
 let choose = new ChooseScreen();
 let friend = new FriendsScreen();
 let name = new Name();
 let tutorial = new TutorialScreen();
-let parameter = new AnaPersonParameter(0, -2);
+let parameter = new AnaPersonParameter(0, -2, 0);
 let mood = new WellBeing(
   100,
   100,
@@ -81,7 +83,6 @@ let thought = "";
 let ana = new AnaPerson(100, 300, 250, 400, bPName, currentMood, thought);
 let nameWritten = false;
 let three = false;
-
 mood.wellBeing = 0;
 //für die Sprechblase
 let counter = minSpeechbubble;
@@ -167,9 +168,16 @@ function mouseClicked() {
       }
     }
   } else if (gameState === "feedbackduck") {
+    let firstfeedback = new Feedback(
+      parameter.trigger,
+      parameter.wellBeing,
+      parameter.knowledge,
+      bPName,
+      0
+    );
+    firstfeedback.display(situationOne);
     numberFeedback = 0;
     if (feedbackScreen[0].hitTestWeiter()) {
-      console.log("mimamdem");
       state = "shopping";
       gameState = "ingame";
       visible.dialog = true;
@@ -182,7 +190,14 @@ function mouseClicked() {
       visible.feedback = false;
     }
   } else if (gameState === "feedbackschool") {
-    console.log("Feedback");
+    let secondFeedback = new Feedback(
+      parameter.trigger,
+      parameter.wellBeing,
+      1 + parameter.knowledge,
+      bPName,
+      1
+    );
+    secondFeedback.display(situationOne);
     numberFeedback = 1;
     if (feedbackScreen[numberFeedback].hitTestWeiter()) {
       state = "shopping";
@@ -197,6 +212,14 @@ function mouseClicked() {
       visible.feedback = false;
     }
   } else if (gameState === "feedbackCD") {
+    let seventhFeedback = new Feedback(
+      parameter.trigger,
+      parameter.wellBeing,
+      2 + parameter.knowledge,
+      bPName,
+      6
+    );
+    seventhFeedback.display(situationOne);
     numberFeedback = 6;
     if (feedbackScreen[numberFeedback].hitTestWeiter()) {
       state = "television1";
@@ -211,6 +234,14 @@ function mouseClicked() {
       visible.feedback = false;
     }
   } else if (gameState === "feedbackIgnore") {
+    let eightFeedback = new Feedback(
+      parameter.trigger,
+      parameter.wellBeing,
+      2 + parameter.knowledge,
+      bPName,
+      7
+    );
+    eightFeedback.display(situationOne);
     numberFeedback = 7;
     if (feedbackScreen[numberFeedback].hitTestWeiter()) {
       state = "television1";
@@ -262,7 +293,6 @@ function mouseClicked() {
       gameState = "danke";
     }
   } else if (gameState === "danke") {
-    console.log("pixel1");
     if (
       mouseX >= exitGame.x &&
       mouseX <= exitGame.x + exitGame.width &&
@@ -273,15 +303,15 @@ function mouseClicked() {
     }
   } else if (gameState === "ingame") {
     if (nameWritten === true) {
-      if (mouseX < 1075 && mouseX > 1125 && mouseY < 35 && mouseY > 85) {
-        console.log("pixel1");
-        gameState = "danke";
+      if (exit.hitTest()) {
+        gameState = "finalFeedback";
       }
       if (state === "street") {
         visible.hover = false;
         visible.dialog = true;
         buttonNumber1 = 0;
         buttonNumber2 = 1;
+
         if (bubbleArray[maxSpeechbubble - 2].mouseHittet === true) {
           visible.button = true;
           visible.dialog = false;
@@ -300,10 +330,12 @@ function mouseClicked() {
           if (visible.button === true && allTheButtons[1].hitTest()) {
             if (mood.wellBeing > -3) {
               mood.wellBeing--;
+              parameter.trigger = parameter.trigger + 1;
             }
             state = "leni";
             buttonNumber1 = 4;
             buttonNumber2 = 5;
+            thought = 6;
             //  visible.hover = false;
           }
         }
@@ -315,6 +347,7 @@ function mouseClicked() {
         buttonNumber2 = 3;
         visible.hover = true;
         thought = 5;
+
         if (bubbleArray[maxSpeechbubble - 2].mouseHittet === true) {
           visible.button = true;
 
@@ -348,12 +381,13 @@ function mouseClicked() {
           visible.feedback = true;
           if (mood.wellBeing > -3) {
             mood.wellBeing--;
+            parameter.trigger = parameter.trigger + 1;
           }
           counter = 22;
           state = "leniNear";
           dialog(situationPerson, state);
           visible.hover = true;
-          thought = 5;
+          thought = 6;
           visible.button = false;
         }
 
@@ -374,7 +408,7 @@ function mouseClicked() {
           visible.feedback = false;
         }
         visible.hover = true;
-        thought = 5;
+        thought = 6;
         visible.dialog = true;
         if (
           bubbleArray[maxSpeechbubble - 3].mouseHittet === true &&
@@ -412,6 +446,7 @@ function mouseClicked() {
             visible.feedback = true;
             if (mood.wellBeing > -3) {
               mood.wellBeing--;
+              parameter.trigger = parameter.trigger + 1;
             }
           }
           if (visible.button === true && allTheButtons[7].hitTest()) {
@@ -419,6 +454,7 @@ function mouseClicked() {
             visible.feedback = true;
             if (mood.wellBeing > -3) {
               mood.wellBeing--;
+              parameter.trigger = parameter.trigger + 1;
             }
             gameState = "feedbackschool";
           }
@@ -452,6 +488,7 @@ function mouseClicked() {
             visible.feedback = true;
             if (mood.wellBeing > -3) {
               mood.wellBeing--;
+              parameter.trigger = parameter.trigger + 1;
             }
             state = "television2";
             visible.button = false;
@@ -494,7 +531,7 @@ function mouseClicked() {
             visible.button = false;
             dialog(situationPerson, state);
             visible.hover = true;
-            thought = 7;
+            thought = 8;
             counter = 99;
           }
           if (visible.button === true && allTheButtons[41].hitTest()) {
@@ -507,9 +544,9 @@ function mouseClicked() {
             visible.button = false;
             dialog(situationPerson, state);
             visible.hover = true;
-            thought = 7;
+            thought = 8;
             visible.hover = true;
-            thought = 7;
+            thought = 8;
             counter = 99;
           }
           if (visible.button === true && allTheButtons[42].hitTest()) {
@@ -522,7 +559,7 @@ function mouseClicked() {
             visible.button = false;
             dialog(situationPerson, state);
             visible.hover = true;
-            thought = 7;
+            thought = 8;
             counter = 99;
           }
         }
@@ -535,7 +572,7 @@ function mouseClicked() {
         }
       } else if (state === "shopping") {
         visible.button = false;
-        console.log(bubbleArray[counter].hitter);
+
         if (bubbleArray[maxSpeechbubble - 2].mouseHittet === true) {
           visible.button = true;
         }
@@ -557,6 +594,7 @@ function mouseClicked() {
         if (visible.button === true && allTheButtons[17].hitTest()) {
           if (mood.wellBeing > -3) {
             mood.wellBeing--;
+            parameter.trigger = parameter.trigger + 1;
           }
           state = "backery";
           visible.feedback = false;
@@ -566,7 +604,6 @@ function mouseClicked() {
           buttonNumber2 = 20;
         }
       } else if (state === "flower") {
-        console.log("f");
         visible.dialog = true;
         if (
           bubbleArray[maxSpeechbubble - 2].mouseHittet === true &&
@@ -582,7 +619,6 @@ function mouseClicked() {
           buttonNumber2 = 22;
         }
       } else if (state === "backery") {
-        console.log("b1");
         if (visible.button === true && allTheButtons[19].hitTest()) {
           state = "backery2";
           counter = 14;
@@ -603,6 +639,7 @@ function mouseClicked() {
           visible.button = false;
           if (mood.wellBeing > -3) {
             mood.wellBeing--;
+            parameter.trigger = parameter.trigger + 1;
           }
         }
       } else if (state === "backery2") {
@@ -667,6 +704,7 @@ function mouseClicked() {
           visible.dialog = false;
           if (mood.wellBeing > -3) {
             mood.wellBeing--;
+            parameter.trigger = parameter.trigger + 1;
           }
         }
       } else if (state === "music2") {
@@ -719,6 +757,13 @@ function mouseClicked() {
 window.mouseClicked = mouseClicked;
 
 function draw() {
+  let finalFeedback = new Feedback(
+    parameter.trigger,
+    parameter.wellBeing,
+    knowledge,
+    bPName,
+    0
+  );
   //es gibt 2 States: state (das ist ingame) und die gameStates, die allgemein anzeigen, was allgemein angezeigt wid
   if (gameState === "pregame") {
     // hier wird angegeben, was wann gezeigt werden soll.
@@ -756,9 +801,13 @@ function draw() {
       tutorial.displaysecond(tutorialTwo);
     }
   }
+  /* if (mouseX < 1075 && mouseX > 1125 && mouseY < 35 && mouseY > 85) {
+        gameState = "finalFeedback";
+      } */
   if (gameState === "danke") {
     image(dankePic, 0, 0, 1162, 700);
-  } else if (gameState === "finalFeedback") {
+  }
+  if (gameState === "finalFeedback") {
     finalFeedback.finalDisplay(situationFour);
   }
   //wenn nichtts beim Namen eingegeben wird, heißt die bP (=betroffene Person) Toni
@@ -921,6 +970,7 @@ function draw() {
           new InstantFeedback(data.instantFeedbackMessage[i])
         );
       }
+
       if (visible.feedback === true) {
         allTheInstantFeedback[feedbackNumber].display();
         allTheInstantFeedback[feedbackNumber].displayText();
@@ -950,7 +1000,6 @@ function draw() {
 
       //weil die Funktion draw die Befehle zwar wahrgenommen,aber immer nur kurz auf false gegangen ist.
 
-      console.log(visible.noteBook);
       if (visible.noteBook === true) {
         push();
         notebook.display();
@@ -979,24 +1028,16 @@ function draw() {
     }
   }
   //siehe oben: die Methode derSprechblase
-  let finalFeedback = new Feedback(
-    parameter.trigger,
-    parameter.wellBeing,
-    knowledge,
-    bPName,
-    0
-  );
+
   let data = new Export(bPName);
   //die Gamestates werden hier angezeigt
   if (gameState === "feedbackduck" || gameState === "feedbackschool") {
-    feedbackScreen[numberFeedback].display(situationOne);
     if (feedbackScreen[numberFeedback].met === false) {
       //wenn ein Feedback gegebe wird, wir dieses für das final Feedback gespeichert
       data.finalFeedback.push(data.createMiddleFeedback[numberFeedback]);
       feedbackScreen[numberFeedback].met = true;
     }
   } else if (gameState === "feedbackCD" || gameState === "feedbackIgnore") {
-    feedbackScreen[numberFeedback].display(situationOne);
     if (feedbackScreen[numberFeedback].met === false) {
       data.finalFeedback.push(data.createMiddleFeedback[numberFeedback]);
       feedbackScreen[numberFeedback].met = true;
@@ -1005,7 +1046,6 @@ function draw() {
     gameState === "feedbackOberfeld" ||
     gameState === "feedbackHerrengarten"
   ) {
-    feedbackScreen[numberFeedback].display(situationOne);
     if (feedbackScreen[numberFeedback].met === false) {
       data.finalFeedback.push(data.createMiddleFeedback[numberFeedback]);
 

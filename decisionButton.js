@@ -71,29 +71,4 @@ export default class Button {
       return false;
     }
   }
-  /*colourchange() {
-    if (mouseIsPressed) {
-      fill(255);
-      text("EJF", 50, 50);
-      this.buttonName = "YIPPIE";
-      console.log("NÖ");
-    }
-  }*/
-
-  // hier wurde versucht der Text in der Mitte zu centrieren
-  // display() {
-  //   this.height = this.messageHeight(this.textLeading);
-  //   if (this.height < 60){
-  //     this.height=60;
-  //   }
-  //   fill(80,40,190);
-  //   rect(this.x, this.y, this.width, this.height+20, 15);
-  //   push();
-  //   translate(this.x+110, this.y+this.height/2);
-  //   textAlign(CENTER);
-  //   textSize(20);
-  //   fill(250);
-  //   text(this.message,0,0);
-  //   pop();
-  // }
 }
