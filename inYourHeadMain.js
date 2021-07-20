@@ -222,7 +222,7 @@ function mouseClicked() {
       bPName,
       6
     );
-    seventhFeedback.display(situationOne);
+    seventhFeedback.display(situationTwo);
     numberFeedback = 6;
     if (feedbackScreen[numberFeedback].hitTestWeiter()) {
       state = "television1";
@@ -244,12 +244,13 @@ function mouseClicked() {
       bPName,
       7
     );
-    eightFeedback.display(situationOne);
+    eightFeedback.display(situationTwo);
     numberFeedback = 7;
     if (feedbackScreen[numberFeedback].hitTestWeiter()) {
       state = "television1";
       gameState = "ingame";
       visible.button = false;
+      visible.feedback = false;
       dialog(situationPerson, state);
       counter = 95;
       buttonNumber1 = 38;
@@ -356,14 +357,13 @@ function mouseClicked() {
 
         if (bubbleArray[maxSpeechbubble - 2].mouseHittet === true) {
           visible.button = true;
-
+          visible.dialog = false;
           if (
             (visible.button === true && allTheButtons[2].hitTest()) ||
             (visible.button === true && allTheButtons[3].hitTest())
           ) {
             state = "duck2";
             feedbackNumber = 0;
-
             visible.feedback = true;
             if (mood.wellBeing < 3) {
               mood.wellBeing++;
@@ -497,6 +497,7 @@ function mouseClicked() {
         }
       } else if (state === "television1") {
         visible.hover = true;
+        visible.feedback = false;
         if (allTheInstantFeedback[feedbackNumber].hitTest()) {
           visible.feedback = false;
         }
@@ -605,7 +606,6 @@ function mouseClicked() {
         buttonNumber1 = 17;
         buttonNumber2 = 18;
         visible.dialog = true;
-
         if (visible.button === true && allTheButtons[18].hitTest()) {
           if (mood.wellBeing < 3) {
             mood.wellBeing++;
@@ -643,8 +643,10 @@ function mouseClicked() {
           buttonNumber2 = 22;
         }
       } else if (state === "backery") {
+        visible.dialog = false;
         if (visible.button === true && allTheButtons[19].hitTest()) {
           state = "backery2";
+
           counter = 14;
           visible.dialog = true;
           feedbackNumber = 7;
@@ -657,7 +659,8 @@ function mouseClicked() {
         if (visible.button === true && allTheButtons[20].hitTest()) {
           state = "backery3";
           feedbackNumber = 8;
-          counter = 15;
+
+          counter = 13;
           visible.dialog = true;
           visible.feedback = true;
           visible.button = false;
@@ -674,7 +677,6 @@ function mouseClicked() {
           visible.feedback = false;
           state = "music";
           visible.dialog = true;
-          counter = 84;
           visible.button = false;
           visible.feedback = false;
           visible.hover = false;
@@ -683,6 +685,7 @@ function mouseClicked() {
           situation.notebookTextNumber = 0;
         }
       } else if (state === "backery3") {
+        console.log("loggg");
         visible.feedback = true;
         visible.button = false;
         visible.dialog = true;
@@ -744,10 +747,7 @@ function mouseClicked() {
           visible.feedback = false;
           situation.notebookTextNumber = 0;
         }
-        if (
-          visible.feedback === false &&
-          bubbleArray[maxSpeechbubble - 3].mouseHittet === true
-        ) {
+        if (bubbleArray[maxSpeechbubble - 3].mouseHittet === true) {
           gameState = "feedbackCD";
         }
       } else if (state === "music3") {
@@ -839,7 +839,7 @@ function draw() {
       bPName,
       0
     );
-    finalFeedback.finalDisplay(situationFour);
+    finalFeedback.finalDisplay(situationFour, allTheNotebook);
   }
   //wenn nichtts beim Namen eingegeben wird, heißt die bP (=betroffene Person) Toni
   if (pbNameArray.length === 0) {
@@ -1066,12 +1066,12 @@ function draw() {
   if (gameState === "feedbackduck" || gameState === "feedbackschool") {
     if (feedbackScreen[numberFeedback].met === false) {
       //wenn ein Feedback gegebe wird, wir dieses für das final Feedback gespeichert
-      data.finalFeedback.push(data.createMiddleFeedback[numberFeedback]);
+      allTheNotebook.push(data.createMiddleFeedback[numberFeedback]);
       feedbackScreen[numberFeedback].met = true;
     }
   } else if (gameState === "feedbackCD" || gameState === "feedbackIgnore") {
     if (feedbackScreen[numberFeedback].met === false) {
-      data.finalFeedback.push(data.createMiddleFeedback[numberFeedback]);
+      allTheNotebook.push(data.createMiddleFeedback[numberFeedback]);
       feedbackScreen[numberFeedback].met = true;
     }
   } else if (
@@ -1079,7 +1079,7 @@ function draw() {
     gameState === "feedbackHerrengarten"
   ) {
     if (feedbackScreen[numberFeedback].met === false) {
-      data.finalFeedback.push(data.createMiddleFeedback[numberFeedback]);
+      allTheNotebook.push(data.createMiddleFeedback[numberFeedback]);
 
       feedbackScreen[numberFeedback].met = true;
     }

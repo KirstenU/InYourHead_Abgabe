@@ -3,6 +3,7 @@ export default class Button {
     this.x = x;
     this.y = y;
     this.buttonName = name;
+    this.height = 50;
     /*this.trigger = trigger;
     this.wellBeing = wellBeing;
     this.knowledge = knowledge;*/
@@ -10,7 +11,7 @@ export default class Button {
   display() {
     //den sollten wir auch noch responsive machen
     fill(0, 200, 0);
-    rect(this.x, this.y, 192.5, 50, 15);
+    rect(this.x, this.y, 192.5, this.height, 15);
     textSize(20);
     fill(250);
     text(this.buttonName, this.x + 35, this.y + 30);

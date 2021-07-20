@@ -26,8 +26,7 @@ export default class Feedback {
     text(this.knowledge, 115, 275);
     text(data.createMiddleFeedback[this.number], 105, 350, 950);
   }
-  finalDisplay(picture) {
-    let data = new Export(this.bPName);
+  finalDisplay(picture, allTheNotebook) {
     image(picture, 0, 0, 1162, 700);
     nochmal.display(7);
     exitGame.display(8);
@@ -36,9 +35,9 @@ export default class Feedback {
     text(this.wellBeing * -1, 115, 175);
     text(this.trigger, 115, 225);
     text(this.knowledge, 115, 275);
-    for (let i = 0; i < data.finalFeedback.length; i++) {
-      translate(0, 330);
-      text(data.finalFeedback[i], 105, 20 * i, 950);
+    translate(0, 330);
+    for (let i = 0; i < allTheNotebook.length; i++) {
+      text(allTheNotebook[i], 105, 100 * i, 950);
     }
   }
   hitTestWeiter() {

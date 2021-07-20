@@ -53,9 +53,6 @@ export default class Button {
     push();
     textSize(20);
     fill(0);
-    if (this.height < otherheight) {
-      this.height = otherheight;
-    }
     text(this.message, this.x + 20, this.y + 25, this.width - 20);
     pop();
   }

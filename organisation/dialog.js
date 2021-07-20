@@ -32,13 +32,19 @@ export function dialog(person, situation) {
       minSpeechbubble = 73;
       maxSpeechbubble = 78;
     }
+    if (situation === "backery") {
+      minSpeechbubble = 12;
+      maxSpeechbubble = 18;
+    }
     if (situation === "backery3") {
-      minSpeechbubble = 13;
-      maxSpeechbubble = 16;
+      console.log("log");
+      minSpeechbubble = 12;
+      maxSpeechbubble = 17;
     }
     if (situation === "backery2") {
-      minSpeechbubble = 14;
-      maxSpeechbubble = 17;
+      console.log("log");
+      minSpeechbubble = 13;
+      maxSpeechbubble = 18;
     }
     if (situation === "flower") {
       minSpeechbubble = 79;
@@ -111,7 +117,7 @@ export function dialog(person, situation) {
 
     if (situation === "television1") {
       minSpeechbubble = 96;
-      maxSpeechbubble = 98;
+      maxSpeechbubble = 97;
     }
     if (situation === "television2") {
       minSpeechbubble = 98;
