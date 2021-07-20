@@ -51,7 +51,7 @@ export function dialog(person, situation) {
       maxSpeechbubble = 81;
     }
     if (situation === "music") {
-      minSpeechbubble = 83;
+      minSpeechbubble = 84;
       maxSpeechbubble = 85;
     }
     if (situation === "music2") {

@@ -125,6 +125,7 @@ function keyTyped() {
 window.keyTyped = keyTyped;
 
 function mouseClicked() {
+  console.log(state);
   //hier werden auf eine viel zu komlizierte Art festgelegt, was wann angezeigt/nicht angezeigt wird.
   //Das alles hätte in verschiedene Dateien exportiert werden müssen, aber leider haben wir uns in Sachen code ein bisschen verschätzt
   //bzw den Code unterschätzt. Sorry, dass es so unordentlic, unübersichtlich unnötig und kompliziert ist.
@@ -702,7 +703,7 @@ function mouseClicked() {
         ) {
           state = "music";
           counter = 84;
-          visible.dialog = true;
+          visible.dialog = false;
           visible.button = false;
           visible.feedback = false;
           visible.hover = false;
@@ -717,7 +718,7 @@ function mouseClicked() {
         if (visible.button === true && allTheButtons[21].hitTest()) {
           state = "music2";
           feedbackNumber = 9;
-          visible.dialog = true;
+          visible.dialog = false;
           visible.button = false;
           visible.feedback = true;
           visible.hover = true;
@@ -751,9 +752,11 @@ function mouseClicked() {
           gameState = "feedbackCD";
         }
       } else if (state === "music3") {
-        if (allTheInstantFeedback[feedbackNumber].hitTest()) {
-          gameState = "feedbackignore";
-          situation.notebookTextNumber = 0;
+        feedbackNumber = 10;
+        situation.notebookTextNumber = 0;
+        if (allTheInstantFeedback[10].hitTest()) {
+          console.log("hit");
+          gameState = "feedbackIgnore";
         }
       }
       //wenn auf den Schwarzen Peil einer Sprechblase gedrück wird, wird der Counter um einers größer. Der Counter gibt dabei an, welce Sprechblase angezeigt werden soll.
@@ -1074,10 +1077,16 @@ function draw() {
       allTheNotebook.push(data.createMiddleFeedback[numberFeedback]);
       feedbackScreen[numberFeedback].met = true;
     }
-  } else if (
+  } /*else if (
     gameState === "feedbackOberfeld" ||
     gameState === "feedbackHerrengarten"
   ) {
+    if (feedbackScreen[numberFeedback].met === false) {
+      allTheNotebook.push(data.createMiddleFeedback[numberFeedback]);
+
+      feedbackScreen[numberFeedback].met = true;
+    }
+  }*/ else if (gameState === "television2" || gameState === "television3") {
     if (feedbackScreen[numberFeedback].met === false) {
       allTheNotebook.push(data.createMiddleFeedback[numberFeedback]);
 
