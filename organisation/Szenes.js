@@ -1,3 +1,5 @@
+import Export from "./Export.js";
+let data = new Export("bP");
 //eine allgemeine Klasse, die festlegt, wann was angezeigt werdn soll
 export default class Situation {
   constructor(situation, person) {
@@ -9,6 +11,8 @@ export default class Situation {
     this.buttonNumber = { one: 0, two: 0, three: 0 };
     this.feedback = 0;
     this.picture = "";
+    this.notebookText = [];
+    this.notebookTextNumber = 0;
   }
   button() {
     if (this.person === "friend") {
@@ -344,7 +348,37 @@ export default class Situation {
       }
     }
   }
+  notebookfeedback() {
+    if (this.notebookTextNumber === 0) {
+      if (this.situation === "duck2") {
+        this.notebookText.push(data.instantFeedbackForNotebook[0]);
+        this.notebookTextNumber = 1;
+      }
+      if (this.situation === "leniNear") {
+        this.notebookText.push(data.instantFeedbackForNotebook[2]);
+        this.notebookTextNumber = 1;
+      }
+      if (this.situation === "school2" || this.situation === "school3") {
+        this.notebookText.push(data.instantFeedbackForNotebook[4]);
+        this.notebookTextNumber = 1;
+      }
 
+      if (this.situation === "backery2" || this.situation === "backery3") {
+        this.notebookText.push(data.instantFeedbackForNotebook[7]);
+        this.notebookTextNumber = 1;
+      }
+
+      if (this.situation === "music2" || this.situation === "music3") {
+        this.notebookText.push(data.instantFeedbackForNotebook[9]);
+        this.notebookTextNumber = 1;
+      }
+
+      if (this.situation === "television3") {
+        this.notebookText.push(data.instantFeedbackForNotebook[10]);
+        this.notebookTextNumber = 1;
+      }
+    }
+  }
   background(
     abendessen,
     baeckerei,

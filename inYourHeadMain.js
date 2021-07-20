@@ -2,7 +2,7 @@ import SpeechBubble from "./SpeechBubble.js";
 import PersonalBubble from "./PersonalBubble.js";
 import AnaPersonParameter from "./AnaPersonParameter.js";
 import WellBeing from "./WellBeing.js";
-import Export from "./Export.js";
+import Export from "./organisation/Export.js";
 import Button from "./decisionButton.js";
 import Situation from "./organisation/Szenes.js";
 import StartScreen from "./StartScreen.js";
@@ -21,6 +21,7 @@ import AnaPerson from "./AnaPerson_K.js";
 import InstantFeedback from "./instant_feedback.js";
 import Notebook from "./notebook.js";
 import Exit from "./ExitButton.js";
+import DankeScreen from "./DankeScreen.js";
 //Parameter
 let knowledge = 0;
 
@@ -53,6 +54,7 @@ let feedbackScreen = [];
 let allTheNotebook = [];
 let pbNameArray = [];
 //bP
+let danke = new DankeScreen();
 let exit = new Exit();
 let start = new StartScreen();
 let gotIt = new VerstaendnisScreen();
@@ -87,7 +89,8 @@ mood.wellBeing = 0;
 //für die Sprechblase
 let counter = minSpeechbubble;
 let bubbleArray = [];
-
+//notebook
+let newNote = false;
 //instantFeedback
 let allTheInstantFeedback = [];
 let feedbackNumber = 0;
@@ -285,21 +288,24 @@ function mouseClicked() {
       visible.feedback = false;
     }
   }*/ else if (gameState === "finalFeedback") {
+    let finalFeedback = new Feedback(
+      parameter.trigger,
+      parameter.wellBeing,
+      knowledge,
+      bPName,
+      0
+    );
     numberFeedback = 12;
-
     if (finalFeedback.hitTestWeiter()) {
-      gameState = "start";
-    } else if (finalFeedback.hitTestExit) {
+      gameState = "pregame";
+      pregameState = "start";
+    } else if (finalFeedback.hitTestExit()) {
       gameState = "danke";
     }
   } else if (gameState === "danke") {
-    if (
-      mouseX >= exitGame.x &&
-      mouseX <= exitGame.x + exitGame.width &&
-      mouseY >= exitGame.y &&
-      mouseY <= exitGame.y + exitGame.height
-    ) {
-      gameState = "start";
+    if (danke.hitTest()) {
+      gameState = "pregame";
+      pregameState = "start";
     }
   } else if (gameState === "ingame") {
     if (nameWritten === true) {
@@ -370,6 +376,7 @@ function mouseClicked() {
         visible.button = false;
         if (allTheInstantFeedback[feedbackNumber].hitTest()) {
           visible.feedback = false;
+          situation.notebookTextNumber = 0;
           gameState = "feedbackduck";
         }
       } else if (state === "leni") {
@@ -379,6 +386,7 @@ function mouseClicked() {
         if (visible.button === true && allTheButtons[4].hitTest()) {
           feedbackNumber = 2;
           visible.feedback = true;
+
           if (mood.wellBeing > -3) {
             mood.wellBeing--;
             parameter.trigger = parameter.trigger + 1;
@@ -404,8 +412,10 @@ function mouseClicked() {
         }
       } else if (state === "leniNear") {
         visible.feedback = true;
+
         if (allTheInstantFeedback[feedbackNumber].hitTest()) {
           visible.feedback = false;
+          situation.notebookTextNumber = 0;
         }
         visible.hover = true;
         thought = 6;
@@ -434,6 +444,7 @@ function mouseClicked() {
             counter = 28;
             visible.button = false;
             visible.feedback = true;
+
             if (mood.wellBeing < 3) {
               mood.wellBeing++;
             }
@@ -444,6 +455,7 @@ function mouseClicked() {
             counter = 29;
             visible.button = false;
             visible.feedback = true;
+
             if (mood.wellBeing > -3) {
               mood.wellBeing--;
               parameter.trigger = parameter.trigger + 1;
@@ -464,6 +476,10 @@ function mouseClicked() {
         visible.hover = false;
         visible.dialog = true;
         visible.button = false;
+        if (allTheInstantFeedback[feedbackNumber].hitTest()) {
+          visible.feedback = false;
+          situation.notebookTextNumber = 0;
+        }
         if (bubbleArray[maxSpeechbubble - 3].mouseHittet === true) {
           gameState = "feedbackschool";
         }
@@ -472,6 +488,10 @@ function mouseClicked() {
         visible.hover = false;
         visible.dialog = true;
         visible.button = false;
+        if (allTheInstantFeedback[feedbackNumber].hitTest()) {
+          visible.feedback = false;
+          situation.notebookTextNumber = 0;
+        }
         if (bubbleArray[maxSpeechbubble - 3].mouseHittet === true) {
           gameState = "feedbackschool";
         }
@@ -568,6 +588,10 @@ function mouseClicked() {
         visible.dialog = true;
         if (allTheInstantFeedback[feedbackNumber].hitTest()) {
           visible.feedback = false;
+          if (allTheInstantFeedback[feedbackNumber].hitTest()) {
+            visible.feedback = false;
+            situation.notebookTextNumber = 0;
+          }
           gameState = "finalFeedback";
         }
       } else if (state === "shopping") {
@@ -656,6 +680,7 @@ function mouseClicked() {
           visible.hover = false;
           buttonNumber1 = 21;
           buttonNumber2 = 22;
+          situation.notebookTextNumber = 0;
         }
       } else if (state === "backery3") {
         visible.feedback = true;
@@ -663,6 +688,10 @@ function mouseClicked() {
         visible.dialog = true;
         if (allTheInstantFeedback[feedbackNumber].hitTest()) {
           visible.feedback = false;
+          if (allTheInstantFeedback[feedbackNumber].hitTest()) {
+            visible.feedback = false;
+            situation.notebookTextNumber = 0;
+          }
         }
         if (
           bubbleArray[maxSpeechbubble - 2].mouseHittet === true &&
@@ -713,6 +742,7 @@ function mouseClicked() {
         visible.feedbacktrue;
         if (allTheInstantFeedback[feedbackNumber].hitTest()) {
           visible.feedback = false;
+          situation.notebookTextNumber = 0;
         }
         if (
           visible.feedback === false &&
@@ -723,6 +753,7 @@ function mouseClicked() {
       } else if (state === "music3") {
         if (allTheInstantFeedback[feedbackNumber].hitTest()) {
           gameState = "feedbackignore";
+          situation.notebookTextNumber = 0;
         }
       }
       //wenn auf den Schwarzen Peil einer Sprechblase gedrück wird, wird der Counter um einers größer. Der Counter gibt dabei an, welce Sprechblase angezeigt werden soll.
@@ -757,13 +788,6 @@ function mouseClicked() {
 window.mouseClicked = mouseClicked;
 
 function draw() {
-  let finalFeedback = new Feedback(
-    parameter.trigger,
-    parameter.wellBeing,
-    knowledge,
-    bPName,
-    0
-  );
   //es gibt 2 States: state (das ist ingame) und die gameStates, die allgemein anzeigen, was allgemein angezeigt wid
   if (gameState === "pregame") {
     // hier wird angegeben, was wann gezeigt werden soll.
@@ -805,9 +829,16 @@ function draw() {
         gameState = "finalFeedback";
       } */
   if (gameState === "danke") {
-    image(dankePic, 0, 0, 1162, 700);
+    danke.display(dankePic);
   }
   if (gameState === "finalFeedback") {
+    let finalFeedback = new Feedback(
+      parameter.trigger,
+      parameter.wellBeing,
+      knowledge,
+      bPName,
+      0
+    );
     finalFeedback.finalDisplay(situationFour);
   }
   //wenn nichtts beim Namen eingegeben wird, heißt die bP (=betroffene Person) Toni
@@ -827,6 +858,7 @@ function draw() {
       }
       //hier werden alle Arrays geladen.
       let data = new Export(bPName);
+      situation.notebookfeedback(newNote);
       //diese datei ist für die Hintergründe in game zuständig
       situation.background(
         abendessen,
@@ -1006,8 +1038,8 @@ function draw() {
         fill(0);
         textSize(20);
         translate(notebook.x, notebook.y + 60);
-        for (let i = 0; i < allTheNotebook.length; i++) {
-          text(allTheNotebook[i], 10, 10 * i, notebook.width - 20);
+        for (let i = 0; i < situation.notebookText.length; i++) {
+          text(situation.notebookText[i], 10, 30 + 50 * i, notebook.width - 20);
         }
         pop();
       }

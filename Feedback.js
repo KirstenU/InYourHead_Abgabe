@@ -1,7 +1,7 @@
 //auf dieser Art von Screens wird zuerst festgelet, wo das Hintergrundbild angezeigt werden soll und welche Buttons wo anzeiegt werden.
 //im Anschluss bekommen diese Buttons einen hitTest, mit dem getestet wird, ob die gedrückt wurden.
 import GameButton from "./gameButton.js";
-import Export from "./Export.js";
+import Export from "./organisation/Export.js";
 let weiterButton = new GameButton(560, 560);
 let nochmal = new GameButton(560, 560);
 let exitGame = new GameButton(825, 560);
